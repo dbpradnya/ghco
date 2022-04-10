@@ -10,6 +10,7 @@
 	</parent>
 	<groupId>com.ghco</groupId>
 	<artifactId>ghco</artifactId>
+	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ghco</name>
 	<description>Demo project for Spring Boot</description>

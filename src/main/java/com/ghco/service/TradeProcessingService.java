@@ -13,7 +13,8 @@ public class TradeProcessingService {
 
     public void processTrades(List<TradeRecord> trades) {
         //
-        System.out.println("bbgCode:portfolio"+"========"+"Currency"+"========"+"AggregatedVolume Of trades");
+        System.out.println("bbgCode:portfolio"+" ======== "+"Currency"+" ======== "+"AggregatedVolume Of trades");
+        System.out.println();
         Map<TradeCondition, Map<String, List<TradeRecord>>> tradesMap = getTradesMap(trades);
 
         Iterator<Map.Entry<TradeCondition, Map<String, List<TradeRecord>>>> tradesMapIterator = tradesMap.entrySet().iterator();
@@ -31,16 +32,16 @@ public class TradeProcessingService {
                     onlyNewAndAmmend.stream().filter(x -> x.getAction().equalsIgnoreCase("AMEND"))
                             .forEach(x -> {
                                 map.computeIfPresent(x.getCurrency(), (key, val) -> val + Double.parseDouble(x.getVolume()));
-                                map.computeIfAbsent(x.getCurrency(), k-> Double.parseDouble(x.getVolume()));
+                                map.computeIfAbsent(x.getCurrency(), k-> Double.valueOf(x.getVolume()));
                             });
                 } else {
                     TradeRecord tradeRecord = tradeRecordList.get(0);
                     // We consider this as NEW only because , AMEND and CANCEL can happen only after NEW. And its already handled in above condition
                     map.computeIfPresent(tradeRecord.getCurrency(), (key, val) -> val + Double.parseDouble(tradeRecord.getVolume()));
-                    map.computeIfAbsent(tradeRecord.getCurrency(), k-> Double.parseDouble(tradeRecord.getVolume()));
+                    map.computeIfAbsent(tradeRecord.getCurrency(), k-> Double.valueOf(tradeRecord.getVolume()));
                 }
             }
-            map.forEach((key, value) -> System.out.println(tradesMapNext.getKey().getBbgCode()+":"+tradesMapNext.getKey().getPortfolio() + "========" + key + "=======" + value));
+            map.forEach((key, value) -> System.out.println(tradesMapNext.getKey().getBbgCode()+":"+tradesMapNext.getKey().getPortfolio() + " ======== " + key + " ======= " + value));
             System.out.println("                    ====================             ");
 
             // bbgCode:Portfolio Currency AggregatedVolume
