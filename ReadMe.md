@@ -1,4 +1,4 @@
-GHCO Trade aggregation Application 
+**GHCO Trade aggregation Application** 
 
 The purpose of this application is to print trade volumes aggregated on the basis of BBGCode and portfolioCode.
 The results are printed as below:
@@ -13,14 +13,14 @@ GOOG US Equity:portfolio1 ======== NOK ======= 8.326384097E9
 
 The results are displayed on the basis of Currency in addition to BBGCode and PortfolioCode.
 
-Observation from provided file:
+**Observation from provided file:**
 Every AMEND and CANCEL operation has subsequent NEW operation.
 
-Assumptions:
+**Assumptions:**
 CANCEL operations are not considered in aggregation. 
 IF AMEND operation is present , traded volume for NEW operation is not included.
 
-How to Run the application:
+**How to Run the application:**
 Clone the repository inti any IDE and run as spring boot application.
 
 First it asks if you want to enter filename manually. If yes please enter 'Y'. If No enter 'N'
@@ -33,3 +33,6 @@ Next once the file is read, the application prompts if the user wants to add any
 Enter Y if user wants to enter a new record. N if otherwise. the System keeps asking for the record till the user inputs N.
 
 Once the additional records are entered, System computes aggregated data for all the records.
+
+**Examples:**
+Please refer ExampleInput.jpg and ExampleInput1.png from the repository
